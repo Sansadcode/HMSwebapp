@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang=""en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Hospital Management System</title>
+</head>
+<body>
+    <h1>Hospital Management System</h1>
+    
+    <!-- Add Patient Form -->
+<h2>Add Patient</h2>
+<form action="/add_patient" method="post">
+   <label for="patient_id">Patient ID:</label>
+    <input type="text" id="patient_id" name="patient_id" required><br><br>
+    <label for="patient_name">Patient Name:</label>
+    <input type="text" id="patient_name" name="patient_name" required><br><br>
+    <input type="submit" value="Add Patient">
+</form>
+
+<!-- Add Doctor Form -->
+
+    <h2>Add Doctor</h2>
+<form action="/add_doctor" method="post">
+    <label for="doctor_name">Doctor Name:</label>
+    <input type="text" id="doctor_name" name="doctor_name" required><br><br>
+    <label for="specialty">Specialty:</label>
+    <input type="text" id="specialty" name="specialty" required><br><br>
+    <input type="submit" value="Add Doctor">
+</form>
+
+
+<!-- Add Prescription Form -->
+<h2>Add Prescription</h2>
+<form action="/add_prescription" method="post">
+    <label for="patient_id">Patient ID:</label>
+    <input type="text" id="patient_id" name="patient_id" required><br><br>
+    <label for="prescription">Prescription:</label><br>
+    <textarea id="prescription" name="prescription" rows="4" cols="50"></textarea><br><br>
+    <input type="submit" value="Add Prescription">
+</form>
+
+<!-- Display Success Message -->
+{% if message %}
+<p>{{ message }}</p>
+{% endif %}
+
+<!-- Display Patients -->
+<h2>Patients</h2>
+<ul>
+    {% for patient in patients %}
+    <li>Patient ID: {{ prescription.patient_id }},{{ patient.patient_name }}</li>
+    {% endfor %}
+</ul>
+
+<!-- Display Doctors -->
+<h2>Doctors</h2>
+<ul>
+    {% for doctor in doctors %}
+    <li>{{ doctor.doctor_name }} - {{ doctor.specialty }}</li>
+    {% endfor %}
+</ul>
+
+
+<!-- Display Prescriptions -->
+<h2>Prescriptions</h2>
+<ul>
+    {% for prescription in prescriptions %}
+    <li>Patient ID: {{ prescription.patient_id }}, Prescription: {{ prescription.prescription }}</li>
+    {% endfor %}
+</ul>
+</body>
+
+</html>
